@@ -2,7 +2,7 @@ import pickle
 
 model = None
 
-with open('../models/lappy_price_predictor.pkl') as file:
+with open('models/lappy_price_predictor.pkl', 'rb') as file:
     model = pickle.load(file)
 
 
