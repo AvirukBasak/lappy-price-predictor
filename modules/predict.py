@@ -4,7 +4,7 @@ import pandas as pd
 
 import pickle
 
-df_cleaned = pd.read_csv('data/csv/laptop_details_cleaned.csv')
+df_cleaned = pd.read_csv('res/csv/laptop_details_cleaned.csv')
 
 df_sel = pd.get_dummies(
     df_cleaned,
@@ -26,7 +26,7 @@ while r2 < 0.8:
 print(f"R² = {r2:.4f}")
 '''
 
-with open('data/model/lappy_price_predictor.pkl', 'rb') as file:
+with open('res/model/lappy_price_predictor.pkl', 'rb') as file:
     model = pickle.load(file)
 
 
