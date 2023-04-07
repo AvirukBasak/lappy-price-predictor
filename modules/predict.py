@@ -2,8 +2,9 @@ import pickle
 
 model = None
 
-with open('lappy_price_predictor.pkl', 'rb') as file:
+with open('../models/lappy_price_predictor.pkl') as file:
     model = pickle.load(file)
+
 
 def predict_price(features):
     df = pd.DataFrame(features, index=[0])
@@ -14,16 +15,17 @@ def predict_price(features):
     df = df[X_train.columns]
     return model.predict(df)[0]
 
-features = {
-    'os': 'MAC OS',
-    'cpu': 'APPLE M1',
-    'ram_space': '16 GB',
-    'ram_type': 'DDR4',
-    'storage_space': '1 TB',
-    'storage_type': 'SDD',
-    'touch_screen': 'NO',
-    'warranty': '1 Y',
-    'display_size': '13.0'
-}
 
-print(f"predicted price: {predict_price(features)}")
+def test():
+    features = {
+        'os': 'MAC OS',
+        'cpu': 'APPLE M1',
+        'ram_space': '16 GB',
+        'ram_type': 'DDR4',
+        'storage_space': '1 TB',
+        'storage_type': 'SDD',
+        'touch_screen': 'NO',
+        'warranty': '1 Y',
+        'display_size': '13.0'
+    }
+    print(f"predicted price: {predict_price(features)}")
