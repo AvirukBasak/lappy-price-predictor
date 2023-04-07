@@ -5,8 +5,10 @@ from modules.predict import predict_price
 
 st.set_page_config(
     page_title='Laptop Price Predictor',
-    page_icon=''
+    page_icon='💻'
 )
+
+st.title('Laptop Price Predictor')
 
 ram_space_options = ['4 GB', '8 GB', '16 GB', '32 GB']
 storage_space_options = ['32 GB', '64 GB', '128 GB', '256 GB', '512 GB', '1 TB', '2 TB']
