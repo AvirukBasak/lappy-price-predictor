@@ -69,7 +69,7 @@ storage_space = st.selectbox('Storage', storage_space_options)
 storage_type = st.selectbox('Storage technology', storage_type_options)
 cpu = st.selectbox('Processor', cpu_options.keys())
 
-if cpu in cpu_apple_specific.keys():
+if cpu in cpu_apple_specific:
     os_options = os_apple_specific
 
 os = st.selectbox('Operating system', os_options.keys())
@@ -91,10 +91,11 @@ features = {
 
 import random
 
-if all(v is not None for v in features.values()):
-    predicted_price = predict_price(features)
-    if predicted_price < 12000:
-        predicted_price = random.randint(12000, 12500)
-    st.write(f"Predicted price: {predicted_price:.2f}")
-else:
-    st.write('Please select all the features to get a prediction')
+if st.button('Predict'):
+    if all(v is not None for v in features.values()):
+        predicted_price = predict_price(features)
+        if predicted_price < 12000:
+            predicted_price = random.randint(14000, 14500)
+        st.write(f"Predicted price: {predicted_price:.2f}")
+    else:
+        st.write('Please select all the features to get a prediction')
