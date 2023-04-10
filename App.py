@@ -15,11 +15,14 @@ storage_space_options = ['32 GB', '64 GB', '128 GB', '256 GB', '512 GB', '1 TB',
 os_options = {
     'Chrome OS': 'CHROME OS',
     'Windows': 'WIN',
-    'macOS': 'MAC OS',
-    'DOS': 'DOS'
+    'DOS': 'DOS',
+    'macOS': 'MAC OS'
+}
+os_apple_specific = {
+    'macOS': 'MAC OS'
 }
 storage_type_options = ['HDD', 'SSD', 'EMMC']
-ram_type_options = ['DDR4', 'LPDDR3', 'DDR5', 'UNIFIED']
+ram_type_options = ['DDR4', 'DDR5', 'UNIFIED']
 cpu_options = {
     'AMD Athlon Dual Core': 'AMD ATHLON DUAL CORE',
     'AMD Dual Core': 'AMD DUAL CORE',
@@ -45,6 +48,11 @@ cpu_options = {
     'Apple M1 Pro': 'APPLE M1 PRO',
     'Apple M2': 'APPLE M2'
 }
+cpu_apple_specific = [
+    'Apple M1',
+    'Apple M1 Pro',
+    'Apple M2'
+]
 display_size_options = [
     '11.6', '13.0', '13.3', '13.4',
     '13.5', '13.6', '14.0', '14.1',
@@ -60,6 +68,10 @@ ram_type = st.selectbox('RAM technology', ram_type_options)
 storage_space = st.selectbox('Storage', storage_space_options)
 storage_type = st.selectbox('Storage technology', storage_type_options)
 cpu = st.selectbox('Processor', cpu_options.keys())
+
+if cpu in cpu_apple_specific.keys():
+    os_options = os_apple_specific
+
 os = st.selectbox('Operating system', os_options.keys())
 display_size = st.selectbox('Display size (inches)', display_size_options)
 touch_screen = st.selectbox('Touch screen', touch_screen_options)
